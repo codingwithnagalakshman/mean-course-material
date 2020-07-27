@@ -1,0 +1,22 @@
+const mongoose = require('mongoose');
+
+const Schema = mongoose.Schema;
+
+const productSchema = new Schema({
+    productId: {
+        type: Number,
+        required: true
+    },
+    title: {
+        type: String,
+        required: true
+    },
+    price: {
+        type: Number,
+        required: true
+    }
+}, { timestamps: true });
+
+const product = mongoose.model('product', productSchema);
+
+module.exports = product;

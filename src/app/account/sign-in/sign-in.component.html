@@ -1,0 +1,24 @@
+<div class="example-container"> 
+    <form class="example-form" (ngSubmit)="onSubmit()" [formGroup]="signInForm">
+      <h2>Sign in</h2>
+      <p>
+        <mat-form-field appearance="outline" class="example-full-width">
+          <mat-label>Enter your email</mat-label>
+          <input matInput placeholder="email@techbrothers99.com" [formControl]="email" required>
+          <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field appearance="outline" class="example-full-width">
+          <mat-label>Enter your password</mat-label>
+          <input matInput type="password" placeholder="password" [formControl]="password" required>
+          <mat-error *ngIf="password.invalid">{{getErrorMessage()}}</mat-error>
+        </mat-form-field>
+      </p>
+      
+      <p style="text-align: center;">
+        <button mat-flat-button color="warn" type="submit">Sign in</button>
+      </p>
+    </form>
+  </div>
+    

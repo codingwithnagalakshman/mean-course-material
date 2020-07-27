@@ -1,0 +1,50 @@
+<div class="example-container"> 
+  <form class="example-form" (ngSubmit)="onSubmit()" [formGroup]="contactusForm">
+    <h2>Contact us</h2>
+    <p>
+      <mat-form-field appearance="outline" class="example-half-width">
+        <mat-label>Enter your first name</mat-label>
+        <input matInput placeholder="first name" [formControl]="firstName" required>
+        <mat-error *ngIf="firstName.invalid">{{getErrorMessage()}}</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="example-half-width">
+        <mat-label>Enter your last name</mat-label>
+        <input matInput placeholder="last name" [formControl]="lastName" required>
+        <mat-error *ngIf="lastName.invalid">{{getErrorMessage()}}</mat-error>
+      </mat-form-field>
+
+    </p>
+    <p>
+      <mat-form-field appearance="outline" class="example-full-width">
+        <mat-label>Enter your email</mat-label>
+        <input matInput placeholder="email@techbrothers99.com" [formControl]="email" required>
+        <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+      </mat-form-field>
+    </p>
+    <p>
+      <mat-form-field appearance="outline" class="example-full-width">
+        <mat-label>Enter subject</mat-label>
+        <input matInput placeholder="subject" [formControl]="subject" required>
+        <mat-error *ngIf="subject.invalid">{{getErrorMessage()}}</mat-error>
+      </mat-form-field>
+    </p>
+    <p>
+      <mat-form-field appearance="outline" class="example-full-width">
+        <mat-label>Enter description</mat-label>
+        <textarea matInput rows="4" placeholder="description" [formControl]="description" required></textarea>
+        <mat-error *ngIf="description.invalid">{{getErrorMessage()}}</mat-error>
+      </mat-form-field>
+    </p>
+    <p *ngIf="success" style="color: green;">
+      <mat-label> Your data saved successfully !!!! </mat-label></p>
+    <p *ngIf="error">
+      <mat-error> An error occured while saving your data. Please try after sometime !!!! </mat-error>
+    </p>
+    <p style="text-align: center;">
+      <button mat-flat-button color="warn" type="reset">Reset</button>
+      <button mat-flat-button color="warn" type="submit">Submit</button>
+    </p>
+  </form>
+</div>
+  

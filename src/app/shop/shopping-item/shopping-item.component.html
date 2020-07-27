@@ -1,0 +1,14 @@
+<mat-card class="example-card">
+    <img mat-card-image src="../../../assets/img/{{item.productId}}.jpg" [alt]="item.title">
+    <mat-card-header>
+        <mat-card-subtitle>{{ item.title }}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-actions>
+      <button mat-fab> £{{ item.price }} </button>
+      <button mat-fab 
+              color="warn" 
+              (click)="addToCart(item.productId)"> 
+          <mat-icon>add_shopping_cart</mat-icon>
+      </button>
+    </mat-card-actions>
+</mat-card>
