@@ -20,6 +20,8 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatSortModule } from '@angular/material/sort';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MomentDateModule } from '@angular/material-moment-adapter';
 
 import { ShoppingItemComponent } from './shop/shopping-item/shopping-item.component';
 import { ShoppingItemsComponent } from './shop/shopping-items/shopping-items.component';
@@ -36,6 +38,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ContactFormListComponent } from './account/contact-form-list/contact-form-list.component';
 import { SignupSuccessComponent } from './account/signup-success/signup-success.component';
 import { ShippingAddressComponent } from './shop/shipping-address/shipping-address.component';
+import { PaymentComponent } from './shop/payment/payment.component';
 
 
 @NgModule({
@@ -55,7 +58,8 @@ import { ShippingAddressComponent } from './shop/shipping-address/shipping-addre
     WelcomeComponent,
     ContactFormListComponent,
     SignupSuccessComponent,
-    ShippingAddressComponent
+    ShippingAddressComponent,
+    PaymentComponent
   ],
   imports: [
     BrowserModule,
@@ -76,7 +80,9 @@ import { ShippingAddressComponent } from './shop/shipping-address/shipping-addre
     MatPaginatorModule,
     MatBadgeModule,
     MatSnackBarModule,
-    MatSortModule
+    MatSortModule,
+    MatDatepickerModule,
+    MomentDateModule
   ],
   providers: [],
   bootstrap: [AppComponent]

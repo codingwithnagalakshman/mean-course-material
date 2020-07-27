@@ -11,6 +11,7 @@ import { CartItemsComponent } from './cart/cart-items/cart-items.component';
 import { ContactFormListComponent } from './account/contact-form-list/contact-form-list.component';
 import { SignupSuccessComponent } from './account/signup-success/signup-success.component';
 import { ShippingAddressComponent } from './shop/shipping-address/shipping-address.component';
+import { PaymentComponent } from './shop/payment/payment.component';
 
 
 const routes: Routes = [
@@ -24,7 +25,8 @@ const routes: Routes = [
   { path: 'orders', component: OrdersComponent },
   { path: 'cart', component: CartItemsComponent },
   { path: 'contact-us-list', component: ContactFormListComponent },
-  { path: 'shipping-address', component: ShippingAddressComponent }
+  { path: 'shipping-address', component: ShippingAddressComponent },
+  { path: 'payment', component: PaymentComponent }
 ];
 
 @NgModule({

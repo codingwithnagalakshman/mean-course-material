@@ -38,8 +38,12 @@
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
-  <div *ngIf="totalPrice != 0" style="text-align: center;">
-    <mat-card>Total Price: {{ totalPrice | number }}</mat-card>
-  </div>
+<div *ngIf="totalPrice != 0" style="text-align: center;">
+  <mat-card>Total Price: {{ totalPrice | number }}</mat-card>
+  <p style="text-align: center;">
+    <button mat-flat-button color="warn" type="button" (click)="backToShop()">Back</button>
+    <button mat-flat-button color="warn" type="button" (click)="goToShippingPage()">Continue</button>
+  </p>
+</div>
   
   

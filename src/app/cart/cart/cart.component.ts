@@ -3,6 +3,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
 import { CartItem } from 'src/app/models/cart-item.model';
 import { CartItemsService } from '../cart-items.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cart',
@@ -13,7 +14,8 @@ export class CartComponent implements OnInit {
 
   @Input() cartItems;
 
-  constructor(private cartItemsService: CartItemsService) { }
+  constructor(private cartItemsService: CartItemsService,
+              private router: Router) { }
 
   displayedColumns: string[] = ['name', 'itemPrice', 'noOfItems', 'totalPrice', 'action'];
   dataSource = new MatTableDataSource();
@@ -44,6 +46,14 @@ export class CartComponent implements OnInit {
 
   deleteItem(productId) {
     this.cartItemsService.deleteItemFromCart(productId);
+  }
+
+  backToShop() {
+    this.router.navigate(['/shop']);
+  }
+
+  goToShippingPage() {
+    this.router.navigate(['/shipping-address']);
   }
 
 }

@@ -5,3 +5,6 @@ table {
 th.mat-sort-header-sorted {
     color: black;
 }
+div > p > button {
+    margin: 1rem;
+}

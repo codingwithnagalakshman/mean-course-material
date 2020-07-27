@@ -1,0 +1,46 @@
+<form class="example-form" (ngSubmit)="onSubmit()" [formGroup]="paymentForm">  
+    <h2>Payment</h2>
+    <p>
+        <mat-form-field appearance="outline" class="example-full-width">
+        <mat-label>Name on card</mat-label>
+        <input matInput [formControl]="name">
+        <mat-error *ngIf="name.invalid">{{getErrorMessage()}}</mat-error>
+        </mat-form-field>
+    </p>
+    <p>
+        <mat-form-field appearance="outline" class="example-full-width">
+        <mat-label>Card number</mat-label>
+        <input matInput [formControl]="cardnumber">
+        <mat-error *ngIf="cardnumber.invalid">{{getErrorMessage()}}</mat-error>
+        </mat-form-field>
+    </p>  
+    <table class="example-full-width" cellspacing="0">
+        <tr>
+            <td>
+                <mat-form-field appearance="outline">
+                <mat-label>Month and Year</mat-label>
+                <input matInput [matDatepicker]="dp" [formControl]="date">
+                <mat-datepicker-toggle matSuffix [for]="dp"></mat-datepicker-toggle>
+                <mat-datepicker #dp
+                                startView="multi-year"
+                                (yearSelected)="chosenYearHandler($event)"
+                                (monthSelected)="chosenMonthHandler($event, dp)"
+                                panelClass="example-month-picker">
+                </mat-datepicker>
+                <mat-error *ngIf="date.invalid">{{getErrorMessage()}}</mat-error>
+                </mat-form-field>
+            </td>
+            <td>
+                <mat-form-field appearance="outline" class="example-full-width">
+                <mat-label>Card number</mat-label>
+                <input matInput [formControl]="cvv">
+                <mat-error *ngIf="cvv.invalid">{{getErrorMessage()}}</mat-error>
+                </mat-form-field>
+            </td>
+        </tr>
+    </table>
+    <p style="text-align: center;">
+        <button mat-flat-button color="warn" type="button" (click)="backToShippingAddress()">Back</button>
+        <button mat-flat-button color="warn" type="submit">Pay</button>
+    </p>
+</form>  

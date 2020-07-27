@@ -17,7 +17,7 @@ export class HeaderComponent implements OnInit {
   verticalPosition: MatSnackBarVerticalPosition = 'top';
 
   openSnackBar() {
-    this._snackBar.open('Item added to cart!!!','', {
+    this._snackBar.open('Items changed in cart!!!','', {
       duration: 500,
       horizontalPosition: this.horizontalPosition,
       verticalPosition: this.verticalPosition,
