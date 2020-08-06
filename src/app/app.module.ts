@@ -22,6 +22,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatSortModule } from '@angular/material/sort';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MomentDateModule } from '@angular/material-moment-adapter';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatExpansionModule } from '@angular/material/expansion';
 
 import { ShoppingItemComponent } from './shop/shopping-item/shopping-item.component';
 import { ShoppingItemsComponent } from './shop/shopping-items/shopping-items.component';
@@ -34,11 +36,16 @@ import { CartComponent } from './cart/cart/cart.component';
 import { CartItemsComponent } from './cart/cart-items/cart-items.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ContactFormListComponent } from './account/contact-form-list/contact-form-list.component';
 import { SignupSuccessComponent } from './account/signup-success/signup-success.component';
 import { ShippingAddressComponent } from './shop/shipping-address/shipping-address.component';
 import { PaymentComponent } from './shop/payment/payment.component';
+import { AuthGuard } from './account/auth.guard';
+import { AuthInterceptor } from './account/auth.interceptor';
+import { UnauthComponent } from './account/unauth/unauth.component';
+
+import { PaymentSuccessComponent } from './shop/payment-success/payment-success.component';
 
 
 @NgModule({
@@ -59,7 +66,9 @@ import { PaymentComponent } from './shop/payment/payment.component';
     ContactFormListComponent,
     SignupSuccessComponent,
     ShippingAddressComponent,
-    PaymentComponent
+    PaymentComponent,
+    UnauthComponent,
+    PaymentSuccessComponent
   ],
   imports: [
     BrowserModule,
@@ -82,9 +91,11 @@ import { PaymentComponent } from './shop/payment/payment.component';
     MatSnackBarModule,
     MatSortModule,
     MatDatepickerModule,
-    MomentDateModule
+    MomentDateModule,
+    MatGridListModule,
+    MatExpansionModule
   ],
-  providers: [],
+  providers: [AuthGuard,  { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

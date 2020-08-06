@@ -1,4 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { ProfileService } from '../profile.service';
+import { Router } from '@angular/router';
+import User from 'src/app/models/user.model';
+
 
 @Component({
   selector: 'app-profile',
@@ -6,10 +10,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
+  
+  constructor(private profileService: ProfileService,
+              private router: Router) { }
 
-  constructor() { }
+  user: User = <User>{};
 
   ngOnInit(): void {
+    this.profileService.getUserProfile().subscribe( user => {
+      this.user = user;
+    }, (err) => {
+      this.router.navigate(['/unauth']);
+    });
   }
-
 }

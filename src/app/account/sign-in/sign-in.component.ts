@@ -40,7 +40,6 @@ export class SignInComponent implements OnInit {
   onSubmit() {
     this.signinService.signin(this.email.value, this.password.value)
         .subscribe( res => {
-          console.log(res['token']);
           localStorage.setItem('token', res['token']);
           this.router.navigate(['/shop']);
         }, ( err) => {

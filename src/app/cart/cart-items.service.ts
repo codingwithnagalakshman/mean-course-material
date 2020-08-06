@@ -111,4 +111,10 @@ export class CartItemsService {
       }
     });
   }
+
+  public emptyCartItems() {
+    this.cartItemsList.length = 0;
+    this.cartItemsChanged.next(this.cartItemsList);
+    this.productCountChanged.next(this.cartItemsList.length);
+  }
 }

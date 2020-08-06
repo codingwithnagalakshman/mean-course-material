@@ -1,1 +1,81 @@
-<p>orders works!</p>
+<mat-accordion>
+    <mat-expansion-panel (opened)="panelOpenState = true"
+                         (closed)="panelOpenState = false" 
+                         *ngFor="let order of orders">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          {{ order.createdAt | date}}
+        </mat-panel-title>
+        <mat-panel-description>
+            £{{ order.total_amount | number}}
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+
+      <mat-accordion class="example-headers-align">
+        <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)" hideToggle>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Products
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+
+          <table border="1">
+            <tr>
+              <th>Product Name</th>
+              <th>No Of Products</th>
+              <th>Produt Price</th>
+              <th>Total Price</th>
+            </tr>
+          
+            <tr *ngFor="let item of order.items">
+              <td>{{item.name}}</td>
+              <td>{{item.noOfItems}}</td>
+              <td>{{item.itemPrice}}</td>
+              <td>{{item.totalPrice | number}}</td>
+            </tr>
+          </table>
+          
+          <mat-action-row>
+            <button mat-button color="primary" (click)="nextStep()">Next</button>
+          </mat-action-row>
+        </mat-expansion-panel>
+      
+        <mat-expansion-panel [expanded]="step === 1" (opened)="setStep(1)" hideToggle>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Shipping Address
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+      
+          <mat-grid-list cols="4" rowHeight="10:2">
+            <mat-grid-tile [style.background] = "'lightgreen'">First Name:</mat-grid-tile>
+            <mat-grid-tile> {{ order.shipping_address.firstName }} </mat-grid-tile>
+            <mat-grid-tile [style.background] = "'lightgreen'">Last Name:</mat-grid-tile>
+            <mat-grid-tile> {{ order.shipping_address.lastName }} </mat-grid-tile>
+            <mat-grid-tile [style.background] = "'lightgreen'">Email:</mat-grid-tile>
+            <mat-grid-tile> {{ order.shipping_address.email }} </mat-grid-tile>
+            <mat-grid-tile [style.background] = "'lightgreen'">Address:</mat-grid-tile>
+            <mat-grid-tile> {{ order.shipping_address.address }} </mat-grid-tile>
+            <mat-grid-tile [style.background] = "'lightgreen'">Address 1:</mat-grid-tile>
+            <mat-grid-tile> {{ order.shipping_address.address1 }} </mat-grid-tile>
+            <mat-grid-tile [style.background] = "'lightgreen'">City:</mat-grid-tile>
+            <mat-grid-tile> {{ order.shipping_address.city }} </mat-grid-tile>
+            <mat-grid-tile [style.background] = "'lightgreen'">State:</mat-grid-tile>
+            <mat-grid-tile> {{ order.shipping_address.state }} </mat-grid-tile>
+            <mat-grid-tile [style.background] = "'lightgreen'">Postal Code:</mat-grid-tile>
+            <mat-grid-tile> {{ order.shipping_address.postalCode }} </mat-grid-tile>
+            <mat-grid-tile [style.background] = "'lightgreen'">Telephone:</mat-grid-tile>
+            <mat-grid-tile> {{ order.shipping_address.telephone }} </mat-grid-tile>
+        </mat-grid-list>
+         
+      
+          <mat-action-row>
+            <button mat-button color="warn" (click)="prevStep()">Previous</button>
+            <button mat-button color="primary" (click)="nextStep()">End</button>
+          </mat-action-row>
+        </mat-expansion-panel>
+    
+      </mat-accordion>
+      
+    </mat-expansion-panel>
+  </mat-accordion>

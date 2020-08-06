@@ -12,6 +12,9 @@ import { ContactFormListComponent } from './account/contact-form-list/contact-fo
 import { SignupSuccessComponent } from './account/signup-success/signup-success.component';
 import { ShippingAddressComponent } from './shop/shipping-address/shipping-address.component';
 import { PaymentComponent } from './shop/payment/payment.component';
+import { AuthGuard } from './account/auth.guard';
+import { UnauthComponent } from './account/unauth/unauth.component';
+import { PaymentSuccessComponent } from './shop/payment-success/payment-success.component';
 
 
 const routes: Routes = [
@@ -21,12 +24,14 @@ const routes: Routes = [
   { path: 'sign-in', component: SignInComponent },
   { path: 'sign-up', component: SignUpComponent },
   { path: 'sign-up-success', component: SignupSuccessComponent },
-  { path: 'profile', component: ProfileComponent },
-  { path: 'orders', component: OrdersComponent },
-  { path: 'cart', component: CartItemsComponent },
-  { path: 'contact-us-list', component: ContactFormListComponent },
-  { path: 'shipping-address', component: ShippingAddressComponent },
-  { path: 'payment', component: PaymentComponent }
+  { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
+  { path: 'orders', component: OrdersComponent, canActivate: [AuthGuard] },
+  { path: 'cart', component: CartItemsComponent, canActivate: [AuthGuard] },
+  { path: 'contact-us-list', component: ContactFormListComponent, canActivate: [AuthGuard] },
+  { path: 'shipping-address', component: ShippingAddressComponent, canActivate: [AuthGuard] },
+  { path: 'payment', component: PaymentComponent, canActivate: [AuthGuard] },
+  { path: 'unauth' , component: UnauthComponent },
+  { path: 'payment-success', component: PaymentSuccessComponent }
 ];
 
 @NgModule({

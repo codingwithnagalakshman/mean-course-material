@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { OrdersService } from '../orders.service';
 
 @Component({
   selector: 'app-orders',
@@ -7,9 +8,28 @@ import { Component, OnInit } from '@angular/core';
 })
 export class OrdersComponent implements OnInit {
 
-  constructor() { }
+
+  panelOpenState = false;
+  step = 0;
+
+  setStep(index: number) {
+    this.step = index;
+  }
+
+  nextStep() {
+    this.step++;
+  }
+
+  prevStep() {
+    this.step--;
+  }
+  orders;
+  constructor(private orderService: OrdersService) { }
 
   ngOnInit(): void {
+    this.orderService.getOrders().subscribe( res => {
+      this.orders = res["data"];
+    })
   }
 
 }

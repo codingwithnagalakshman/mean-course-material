@@ -4,6 +4,7 @@ import { MatTableDataSource } from '@angular/material/table';
 
 import Contactus from '../../models/contactus.model';
 import { ContactusService } from '../contactus.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -14,7 +15,8 @@ import { ContactusService } from '../contactus.service';
 export class ContactFormListComponent implements OnInit {
 
   ELEMENT_DATA: Contactus[];
-  constructor(private contactUsService: ContactusService) { }
+  constructor(private contactUsService: ContactusService,
+              private router: Router) { }
 
   displayedColumns: string[] = ['firstName', 'lastName', 'email', 'subject', 'description'];
   dataSource = new MatTableDataSource<Contactus>();
@@ -26,7 +28,8 @@ export class ContactFormListComponent implements OnInit {
     this.contactUsService.getContactUsList()
         .subscribe( ( response ) => {
           this.dataSource.data = [...response];
-          console.log(this.ELEMENT_DATA);
+        }, (err) => {
+          this.router.navigate(['/unauth']);
         })
   }
 

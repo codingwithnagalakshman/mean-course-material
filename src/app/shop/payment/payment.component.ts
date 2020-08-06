@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { MomentDateAdapter, MAT_MOMENT_DATE_ADAPTER_OPTIONS } from '@angular/material-moment-adapter';
 import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
@@ -7,6 +7,8 @@ import * as _moment from 'moment';
 // tslint:disable-next-line:no-duplicate-imports
 import { Moment } from 'moment';
 import { Router } from '@angular/router';
+import { PaymentService } from '../payment.service';
+import { Payment } from 'src/app/models/payment.model';
 
 const moment = _moment;
 
@@ -21,6 +23,7 @@ export const MY_FORMATS = {
     monthYearA11yLabel: 'MMMM YYYY',
   },
 };
+
 
 @Component({
   selector: 'app-payment',
@@ -44,7 +47,9 @@ export class PaymentComponent implements OnInit {
   date = new FormControl(moment());
   cvv = new FormControl('', [Validators.required]);
 
-  constructor(private fb: FormBuilder, private router: Router) { }
+  constructor(private fb: FormBuilder, 
+              private router: Router,
+              private paymentService: PaymentService) { }
 
   ngOnInit(): void {
     this.paymentForm = this.fb.group({
@@ -57,10 +62,25 @@ export class PaymentComponent implements OnInit {
 
   getErrorMessage() {
 
+    if( this.name.hasError('required') || 
+        this.cardnumber.hasError('required') || 
+        this.date.hasError('required') || 
+        this.cvv.hasError('required') ) {
+          return 'You must enter a value';
+        }
   }
 
 
   onSubmit() {
+
+    if( this.paymentForm.valid ) {
+      this.paymentService.savePayment(this.cardnumber.value).subscribe((res) => {
+        console.log(res);
+        this.router.navigate(['/payment-success']);
+      }, ( err => {
+        this.router.navigate(['/unauth']);
+      }));
+    }
 
   }
 
@@ -80,5 +100,4 @@ export class PaymentComponent implements OnInit {
     this.date.setValue(ctrlValue);
     datepicker.close();
   }
-
 }

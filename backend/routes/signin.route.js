@@ -7,6 +7,7 @@ const keys = require('../config/keys');
 
 router.post('/', (req, res, next) => {
     passport.authenticate('signin', (err, user, info) => {
+        console.log('user signin', user);
         if(err || !user) {
             res.status(400).json({
                 message: info.message,

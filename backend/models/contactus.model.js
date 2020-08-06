@@ -3,6 +3,10 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const contactUsSchema = new Schema({
+    _id: {
+        type: mongoose.Schema.Types.ObjectId,
+        auto: true
+    },
     firstName: {
         type: String,
         required: true
@@ -25,6 +29,4 @@ const contactUsSchema = new Schema({
     }
 }, { timestamps: true });
 
-const contactUs = mongoose.model('contactusform', contactUsSchema);
-
-module.exports = contactUs;
+module.exports = mongoose.model('contactusform', contactUsSchema);
