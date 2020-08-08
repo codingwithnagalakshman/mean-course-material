@@ -43,6 +43,10 @@ export class SignUpComponent implements OnInit {
       return 'You must enter a value';
     }
 
+    if(this.confirmPassword.hasError('passwordNotMatched')) {
+      return 'Password and confirm password does not match';
+    }
+
     return this.email.hasError('email') ? 'Not a valid email' : '';
   } 
 
@@ -50,7 +54,7 @@ export class SignUpComponent implements OnInit {
 
     if(this.signUpForm.valid) {
       if (this.password.value !== this.confirmPassword.value) {
-        return ;
+        return this.signUpForm.controls['confirmPassword'].setErrors({'passwordNotMatched': true});;
       }
       const user = new User(this.firstName.value, 
                             this.lastName.value, 

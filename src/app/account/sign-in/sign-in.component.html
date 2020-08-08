@@ -15,10 +15,12 @@
           <mat-error *ngIf="password.invalid">{{getErrorMessage()}}</mat-error>
         </mat-form-field>
       </p>
-      
+      <p *ngIf="error" style="color: red;">
+        This email is not registered with us.
+        <a [routerLink]="['/sign-up']" >click here</a> to register.
+      </p>
       <p style="text-align: center;">
         <button mat-flat-button color="warn" type="submit">Sign in</button>
       </p>
     </form>
   </div>
-    

@@ -15,6 +15,8 @@ export class SignInComponent implements OnInit {
   email= new FormControl('', [Validators.required, Validators.email]);
   password= new FormControl('', [Validators.required]);
 
+  error: boolean = false;
+
   constructor(private fb: FormBuilder, 
               private signinService: SigninService,
               private router: Router) { }
@@ -44,6 +46,7 @@ export class SignInComponent implements OnInit {
           this.router.navigate(['/shop']);
         }, ( err) => {
           console.log(err);
+          this.error = true;
         });
   }
 

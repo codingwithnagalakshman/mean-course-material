@@ -9,6 +9,7 @@ const signupRoute = require('./backend/routes/signup.route');
 const signinRoute = require('./backend/routes/signin.route');
 const profileRoute = require('./backend/routes/profile.route');
 const orderRoute = require('./backend/routes/order.route');
+const componentRoute = require('./backend/routes/component.route');
 
 const keys = require('./backend/config/keys');
 require('./backend/setup/passport-local-setup');
@@ -42,6 +43,7 @@ app.use('/api/signup', signupRoute);
 app.use('/api/signin', signinRoute);
 app.use('/api/profile', profileRoute);
 app.use('/api/order', orderRoute);
+app.use('/api/components', componentRoute);
 
 
 app.listen(port);

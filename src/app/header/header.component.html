@@ -28,6 +28,43 @@
                 <mat-icon> contacts</mat-icon>
               </button>
             </div>
+            <div class="example-button-container" routerLinkActive="active">
+              <button mat-fab color="warn" [matMenuTriggerFor]="components">
+                <mat-icon>menu</mat-icon>
+              </button>
+              <mat-menu #components="matMenu">
+                <button mat-menu-item [routerLink]="['/autocomplete']">
+                  <span>Autocomplete</span>
+                </button>
+                <button mat-menu-item [routerLink]="['/checkbox']">
+                  <span>Checkbox</span>
+                </button>
+                <button mat-menu-item [routerLink]="['/datepicker']">
+                  <span>Datepicker</span>
+                </button>
+                <button mat-menu-item [routerLink]="['/dialog']">
+                  <span>Dialog</span>
+                </button>
+                <button mat-menu-item [routerLink]="['/radio']">
+                  <span>Radio Button</span>
+                </button>
+                <button mat-menu-item [routerLink]="['/select']">
+                  <span>Select</span>
+                </button>
+                <button mat-menu-item [routerLink]="['/slidetoggle']">
+                  <span>Slide toggle</span>
+                </button>
+                <button mat-menu-item [routerLink]="['/table']">
+                  <span>Table</span>
+                </button>
+                <button mat-menu-item [routerLink]="['/tab']">
+                  <span>Tab</span>
+                </button>
+                <button mat-menu-item [routerLink]="['/tooltip']">
+                  <span>Tooltip</span>
+                </button>
+            </mat-menu>
+            </div>
           </div>
         </div>
     </section>

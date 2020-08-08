@@ -15,6 +15,16 @@ import { PaymentComponent } from './shop/payment/payment.component';
 import { AuthGuard } from './account/auth.guard';
 import { UnauthComponent } from './account/unauth/unauth.component';
 import { PaymentSuccessComponent } from './shop/payment-success/payment-success.component';
+import { AutocompleteComponent } from './components/autocomplete/autocomplete.component';
+import { CheckboxComponent } from './components/checkbox/checkbox.component';
+import { DatepickerComponent } from './components/datepicker/datepicker.component';
+import { DialogComponent } from './components/dialog/dialog.component';
+import { RadioButtonComponent } from './components/radio-button/radio-button.component';
+import { SelectComponent } from './components/select/select.component';
+import { SlideToggleComponent } from './components/slide-toggle/slide-toggle.component';
+import { TableComponent } from './components/table/table.component';
+import { TabComponent } from './components/tab/tab.component';
+import { TooltipComponent } from './components/tooltip/tooltip.component';
 
 
 const routes: Routes = [
@@ -31,7 +41,17 @@ const routes: Routes = [
   { path: 'shipping-address', component: ShippingAddressComponent, canActivate: [AuthGuard] },
   { path: 'payment', component: PaymentComponent, canActivate: [AuthGuard] },
   { path: 'unauth' , component: UnauthComponent },
-  { path: 'payment-success', component: PaymentSuccessComponent }
+  { path: 'payment-success', component: PaymentSuccessComponent },
+  { path: 'autocomplete', component: AutocompleteComponent },
+  { path: 'checkbox', component: CheckboxComponent },
+  { path: 'datepicker', component: DatepickerComponent },
+  { path: 'dialog', component: DialogComponent },
+  { path: 'radio', component: RadioButtonComponent },
+  { path: 'select', component: SelectComponent },
+  { path: 'slidetoggle', component: SlideToggleComponent },
+  { path: 'table', component: TableComponent },
+  { path: 'tab', component: TabComponent },
+  { path: 'tooltip', component: TooltipComponent }
 ];
 
 @NgModule({

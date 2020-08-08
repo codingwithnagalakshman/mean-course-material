@@ -1,9 +1,9 @@
 const Product = require('../models/product.model');
-const config = require('../config/database');
+const keys = require('../config/keys');
 
 const mongoose = require('mongoose');
 
-const uri = `mongodb+srv://${config.mongo_username}:${config.mongo_password}@cluster0-pzufn.gcp.mongodb.net/${config.mongo_database}?retryWrites=true&w=majority`;
+const uri = keys.mongo.dbURI;
 
 mongoose.connect(uri, {useNewUrlParser: true, useUnifiedTopology: true})
         .then( () => {console.log('Connection to Mongo is successful');})
